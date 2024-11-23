@@ -12,11 +12,11 @@
     <title><?= $this->renderSection('title'); ?> - Admin DM</title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url('admin/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url('admin/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <link rel="shortcut icon" href="<?php echo base_url('images/logokopi.png'); ?>" type="image/png">
 
@@ -60,12 +60,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-arrow-down"></i>
-                    <span>Pemasukan</span>
+                    <span>Data Sekolah</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/pemasokan">Daftar Pemasukan</a>
-                        <a class="collapse-item" href="/pemasokan/create">Tambah Pemasukan</a>
+                        <a class="collapse-item" href="/subjects">Data Pelajaran</a>
+                        <a class="collapse-item" href="/students">Data Siswa</a>
+                        <a class="collapse-item" href="/teachers">Data Guru</a>
+                        <a class="collapse-item" href="/classes">Data Kelas</a>
                     </div>
                 </div>
             </li>
@@ -74,63 +76,12 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-arrow-up"></i>
-                    <span>Pengeluaran</span>
+                    <span>Absensi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/pengeluaran_admin">Daftar Pengeluaran</a>
-                        <a class="collapse-item" href="/pengeluaran/create">Tambah Pengeluaran</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Barang Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDaftar" aria-expanded="true" aria-controls="collapseDaftar">
-                    <i class="fas fa-fw fa-cart-plus"></i>
-                    <span>Daftar Barang</span>
-                </a>
-                <div id="collapseDaftar" class="collapse" aria-labelledby="headingBarang" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/barang">Daftar Barang</a>
-                        <a class="collapse-item" href="/barang/create">Tambah Barang</a>
-                        <a class="collapse-item" href="/barang/total">Total</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Relasi
-            </div>
-
-            <!-- Nav Item - Supplier Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupplier" aria-expanded="true" aria-controls="collapseSupplier">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Supplier</span>
-                </a>
-                <div id="collapseSupplier" class="collapse" aria-labelledby="headingSupplier" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/suppliers">Daftar Supplier</a>
-                        <a class="collapse-item" href="/supplier/create">Tambah Supplier</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Pelanggan Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePelanggan" aria-expanded="true" aria-controls="collapsePelanggan">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Pelanggan</span>
-                </a>
-                <div id="collapsePelanggan" class="collapse" aria-labelledby="headingPelanggan" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/pelanggan">Daftar Pelanggan</a>
-                        <a class="collapse-item" href="/pelanggan/create">Tambah Pelanggan</a>
+                        <a class="collapse-item" href="/jadwal">Jadwal Pelajaran</a>
+                        <a class="collapse-item" href="/absensi">Absen</a>
                     </div>
                 </div>
             </li>
@@ -169,7 +120,7 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600">
                                     Hi, <?= session()->get('nama_pengguna'); ?>
                                 </span>
-                                <img class="img-profile rounded-circle" src="<?= base_url('admin/img/undraw_profile.svg'); ?>">
+                                <img class="img-profile rounded-circle" src="<?= base_url('assets/img/undraw_profile.svg'); ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -237,21 +188,21 @@
     </div> -->
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url('admin/vendor/jquery/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('admin/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('admin/vendor/jquery-easing/jquery.easing.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js'); ?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('admin/js/sb-admin-2.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/sb-admin-2.min.js'); ?>"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url('admin/vendor/chart.js/Chart.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url('admin/js/demo/chart-area-demo.js'); ?>"></script>
-    <script src="<?= base_url('admin/js/demo/chart-pie-demo.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/demo/chart-area-demo.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/demo/chart-pie-demo.js'); ?>"></script>
 
 </body>
 
