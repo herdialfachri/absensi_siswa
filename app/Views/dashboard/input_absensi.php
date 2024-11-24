@@ -19,7 +19,7 @@ Tambah Absensi
                 <h6 class="m-0 font-weight-bold text-primary">Formulir Tambah Absensi</h6>
             </div>
             <div class="card-body">
-                <form action="<?= site_url('/save'); ?>" method="post">
+                <form id="attendanceForm" action="<?= site_url('/save'); ?>" method="post">
                     <div class="form-group">
                         <label for="schedule_id">Jadwal</label>
                         <select class="form-control" id="schedule_id" name="schedule_id" required onchange="updateScheduleDetails()">
@@ -55,7 +55,7 @@ Tambah Absensi
                         <!-- Tabel siswa akan ditampilkan di sini -->
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary mb-2">Simpan Absensi</button>
+                        <button type="submit" class="btn btn-primary mb-2" onclick="return confirmSubmit()">Simpan Absensi</button>
                     </div>
                 </form>
             </div>
@@ -103,10 +103,10 @@ Tambah Absensi
                     <td>${student.name}</td>
                     <td>
                         <select name="status_${student.id}" class="form-control">
-                            <option value="present">Hadir</option>
-                            <option value="absent">Alfa</option>
-                            <option value="sick">Sakit</option>
-                            <option value="permission">Izin</option>
+                            <option value="hadir">Hadir</option>
+                            <option value="alfa">Alfa</option>
+                            <option value="sakit">Sakit</option>
+                            <option value="izin">Izin</option>
                         </select>
                     </td>
                     <td>
@@ -123,6 +123,10 @@ Tambah Absensi
 
                 tableContainer.innerHTML = tableHTML;
             });
+    }
+
+    function confirmSubmit() {
+        return confirm('Apakah Anda yakin ingin menyimpan data absensi?');
     }
 
     document.addEventListener('DOMContentLoaded', function() {

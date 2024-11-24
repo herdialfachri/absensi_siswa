@@ -25,26 +25,38 @@ Daftar Presensi
                 <h6 class="m-0 font-weight-bold text-primary">Data Presensi</h6>
             </div>
             <div class="card-body">
+                <div class="mb-3">
+                    <label for="searchNis" class="form-label">Silakan masukkan NIS (Nomor Induk Siswa) untuk mencari data siswa yang diinginkan:</label>
+                    <input type="text" id="searchNis" class="form-control" placeholder="Masukkan NIS disini...">
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No.</th>
+                                <th>NIS</th>
                                 <th>Jadwal</th>
                                 <th>Siswa</th>
+                                <th>Kelas</th>
                                 <th>Status</th>
                                 <th>Catatan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="attendanceTable">
                             <?php if (!empty($attendanceRecords)) : ?>
                                 <?php foreach ($attendanceRecords as $record) : ?>
                                     <tr>
                                         <td><?= $record['id']; ?></td>
+                                        <td><?= $record['student_nis']; ?></td>
                                         <td><?= $record['day'] . ', ' . $record['time']; ?></td>
                                         <td><?= $record['student_name']; ?></td>
+                                        <td><?= $record['student_class']; ?></td>
                                         <td><?= $record['status']; ?></td>
                                         <td><?= $record['note'] ?? '-'; ?></td>
+                                        <td>
+                                            <a href="<?= base_url('/attendance_records/edit/' . $record['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
@@ -59,5 +71,71 @@ Daftar Presensi
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('searchNis').addEventListener('input', function() {
+        const nis = this.value;
+
+        // Jika input kosong, reload seluruh data
+        if (nis === '') {
+            fetch('<?= base_url('/reload-attendance'); ?>', {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    updateTable(data); // Fungsi untuk memperbarui tabel
+                })
+                .catch(error => console.error('Error:', error));
+            return;
+        }
+
+        // Jika ada input, lakukan pencarian
+        fetch('<?= base_url('/search-attendance'); ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    nis: nis
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                updateTable(data); // Fungsi untuk memperbarui tabel
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    // Fungsi untuk memperbarui tabel
+    function updateTable(data) {
+        const tableBody = document.getElementById('attendanceTable');
+        tableBody.innerHTML = ''; // Bersihkan tabel sebelum menambahkan data baru
+
+        if (data.length > 0 && !data.message) {
+            data.forEach((record, index) => {
+                tableBody.innerHTML += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${record.student_nis}</td>
+                <td>${record.day}, ${record.time}</td>
+                <td>${record.student_name}</td>
+                <td>${record.student_class}</td>
+                <td>${record.status}</td>
+                <td>${record.note}</td>
+                <td>
+                    <a href="${record.edit_url}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            `;
+            });
+        } else {
+            tableBody.innerHTML = '<tr><td colspan="8" class="text-center">Data tidak ditemukan.</td></tr>';
+        }
+    }
+</script>
 
 <?= $this->endSection() ?>
