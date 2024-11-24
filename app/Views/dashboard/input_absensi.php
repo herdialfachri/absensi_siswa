@@ -27,8 +27,10 @@ Tambah Absensi
                                 <option value="<?= $schedule['id']; ?>"
                                     data-teacher="<?= $schedule['teacher_name']; ?>"
                                     data-subject="<?= $schedule['subject_name']; ?>"
-                                    data-class="<?= $schedule['class_id']; ?>">
-                                    <?= $schedule['name']; ?>
+                                    data-class-id="<?= $schedule['class_id']; ?>"
+                                    data-class-name="<?= $schedule['class_name']; ?>"
+                                    data-day="<?= $schedule['day']; ?>">
+                                    <?= $schedule['name'] . ' - ' . $schedule['day']; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -43,8 +45,12 @@ Tambah Absensi
                     </div>
                     <div class="form-group">
                         <label>Kelas</label>
-                        <input type="text" id="class_id" name="class_id" class="form-control" readonly>
+                        <!-- Untuk ditampilkan -->
+                        <input type="text" id="class_name" class="form-control" readonly>
+                        <!-- Untuk disimpan -->
+                        <input type="hidden" id="class_id" name="class_id">
                     </div>
+
                     <div id="studentsTable" class="mt-4">
                         <!-- Tabel siswa akan ditampilkan di sini -->
                     </div>
@@ -62,11 +68,14 @@ Tambah Absensi
         const schedule = document.getElementById('schedule_id');
         const selectedOption = schedule.options[schedule.selectedIndex];
 
+        // Isi data guru, mata pelajaran, dan nama kelas
         document.getElementById('teacher_name').value = selectedOption.getAttribute('data-teacher');
         document.getElementById('subject_name').value = selectedOption.getAttribute('data-subject');
-        document.getElementById('class_id').value = selectedOption.getAttribute('data-class');
+        document.getElementById('class_name').value = selectedOption.getAttribute('data-class-name'); // Nama kelas untuk ditampilkan
+        document.getElementById('class_id').value = selectedOption.getAttribute('data-class-id'); // ID kelas untuk disimpan
 
-        loadStudents(selectedOption.getAttribute('data-class'));
+        // Muat siswa berdasarkan class_id
+        loadStudents(selectedOption.getAttribute('data-class-id'));
     }
 
     function loadStudents(classId) {
@@ -75,40 +84,42 @@ Tambah Absensi
             .then(data => {
                 const tableContainer = document.getElementById('studentsTable');
                 let tableHTML = `
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nama Siswa</th>
-                            <th>Status</th>
-                            <th>Catatan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-                data.forEach(student => {
-                    tableHTML += `
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>${student.name}</td>
-                        <td>
-                            <select name="status_${student.id}" class="form-control">
-                                <option value="present">Hadir</option>
-                                <option value="absent">Alfa</option>
-                                <option value="sick">Sakit</option>
-                                <option value="permission">Izin</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="text" name="note_${student.id}" class="form-control">
-                        </td>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Status</th>
+                        <th>Catatan</th>
                     </tr>
-                `;
+                </thead>
+                <tbody>
+        `;
+
+                data.forEach((student, index) => {
+                    tableHTML += `
+                <tr>
+                    <td>${index + 1}</td> <!-- Penomoran -->
+                    <td>${student.name}</td>
+                    <td>
+                        <select name="status_${student.id}" class="form-control">
+                            <option value="present">Hadir</option>
+                            <option value="absent">Alfa</option>
+                            <option value="sick">Sakit</option>
+                            <option value="permission">Izin</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="note_${student.id}" class="form-control">
+                    </td>
+                </tr>
+            `;
                 });
 
                 tableHTML += `
-                    </tbody>
-                </table>
-            `;
+                </tbody>
+            </table>
+        `;
 
                 tableContainer.innerHTML = tableHTML;
             });

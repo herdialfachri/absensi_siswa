@@ -42,7 +42,7 @@ class AttendanceRecordController extends BaseController
                 'schedule_id' => $schedule_id,
                 'student_id' => $student['id'],
                 'status' => $this->request->getPost('status_' . $student['id']),
-                'note' => $this->request->getPost('note_' . $student['id']),
+                'note' => $this->request->getPost('note_' . $student['id']) ?: 'Tidak ada catatan',
             ]);
         }
 
