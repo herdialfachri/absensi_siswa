@@ -18,7 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/dashboard/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
-    <link rel="shortcut icon" href="<?php echo base_url('images/logokopi.png'); ?>" type="image/png">
+    <link rel="icon" type="image/png" href="assets/dashboard/img/logosmanpat.png"/>
 
 </head>
 

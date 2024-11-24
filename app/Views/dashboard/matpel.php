@@ -27,7 +27,7 @@ Daftar Jadwal
                                 <th>Kelas</th>
                                 <th>Mata Pelajaran</th>
                                 <th>Guru</th>
-                                <th>Nama</th>
+                                <th>Waktu</th>
                                 <th>Hari</th>
                                 <th>Jam</th>
                             </tr>
