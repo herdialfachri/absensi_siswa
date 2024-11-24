@@ -18,10 +18,6 @@ class CreateAttendanceRecordsTable extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'class_id' => [ // Relasi ke kelas untuk mempermudah filter
-                'type' => 'INT',
-                'unsigned' => true,
-            ],
             'student_id' => [
                 'type' => 'INT',
                 'unsigned' => true,
@@ -41,7 +37,6 @@ class CreateAttendanceRecordsTable extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('schedule_id', 'schedules', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('class_id', 'classes', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('student_id', 'students', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('attendance_records');
     }

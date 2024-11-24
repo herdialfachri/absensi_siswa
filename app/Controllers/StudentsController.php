@@ -26,4 +26,13 @@ class StudentsController extends BaseController
 
         return view('dashboard/siswa', $data);
     }
+
+    public function byClass($classId)
+    {
+        // Ambil data siswa berdasarkan class_id
+        $students = $this->studentsModel->getStudentsByClass($classId);
+        
+        // Kirimkan data dalam format JSON
+        return $this->response->setJSON($students);
+    }
 }

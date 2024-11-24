@@ -80,8 +80,8 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/jadwal">Jadwal Pelajaran</a>
-                        <a class="collapse-item" href="/absensi">Absen</a>
+                        <a class="collapse-item" href="/schedules">Jadwal Pelajaran</a>
+                        <a class="collapse-item" href="/attendance_records">Absen</a>
                     </div>
                 </div>
             </li>

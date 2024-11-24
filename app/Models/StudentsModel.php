@@ -18,4 +18,9 @@ class StudentsModel extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function getStudentsByClass($classId)
+    {
+        return $this->where('class_id', $classId)->findAll();
+    }
 }
