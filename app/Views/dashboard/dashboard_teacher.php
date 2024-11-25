@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Guru</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1>Welcome, <?= session()->get('username') ?></h1>
-        <h2>Dashboard Guru</h2>
-        <p>This is the Guru dashboard. Manage your site here.</p>
-        <a href="/auth/logout" class="btn btn-danger">Logout</a>
-    </div>
-</body>
-</html>
+<!-- Implementasi untuk view admin -->
+<?= $this->extend('tmp/template') ?>
+
+<?= $this->section('title') ?>
+
+Dashboard Teacher
+
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Teacher</h1>
+</div>
+
+
+<?= $this->endSection() ?>

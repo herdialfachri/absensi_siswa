@@ -11,7 +11,7 @@ class Home extends BaseController
 
     public function dashboard(): string
     {
-        return view('dashboard/index');
+        return view('dashboard/dashboard_admin');
     }
 
     public function dashboard_master(): string

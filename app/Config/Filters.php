@@ -13,6 +13,9 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\Auth;
+use App\Filters\MasterAuth;
+use App\Filters\AdminAuth;
+use App\Filters\TeacherAuth;
 
 class Filters extends BaseFilters
 {
@@ -26,7 +29,10 @@ class Filters extends BaseFilters
      * or [filter_name => [classname1, classname2, ...]]
      */
     public array $aliases = [
-        'auth'          => Auth::class,  
+        'auth'          => Auth::class,
+        'master'        => MasterAuth::class,
+        'admin'         => AdminAuth::class,
+        'teacher'       => TeacherAuth::class, 
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,

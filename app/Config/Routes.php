@@ -11,9 +11,9 @@ $routes->get('/login', 'AuthController::form_login');
 $routes->post('/auth/login', 'AuthController::login');
 $routes->get('/auth/logout', 'AuthController::logout');
 
-$routes->get('/dashboard_admin', 'Home::dashboard', ['filter' => 'auth']);
-$routes->get('/dashboard_master', 'Home::dashboard_master', ['filter' => 'auth']);
-$routes->get('/dashboard_teacher', 'Home::dashboard_teacher', ['filter' => 'auth']);
+$routes->get('/dashboard_admin', 'Home::dashboard', ['filter' => 'admin']);
+$routes->get('/dashboard_master', 'Home::dashboard_master', ['filter' => 'master']);
+$routes->get('/dashboard_teacher', 'Home::dashboard_teacher', ['filter' => 'teacher']);
 
 $routes->get('/subjects', 'SubjectsController::index', ['filter' => 'auth']);
 $routes->get('/students', 'StudentsController::index', ['filter' => 'auth']);
