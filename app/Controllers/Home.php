@@ -14,8 +14,13 @@ class Home extends BaseController
         return view('dashboard/index');
     }
 
-    public function login(): string
+    public function dashboard_master(): string
     {
-        return view('login/index');
+        return view('dashboard/dashboard_master');
+    }
+
+    public function dashboard_teacher(): string
+    {
+        return view('dashboard/dashboard_teacher');
     }
 }

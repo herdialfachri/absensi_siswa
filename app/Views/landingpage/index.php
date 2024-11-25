@@ -105,8 +105,7 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-7 text-start">
-                                    <h1 class="display-1 text-white animated slideInRight mb-3">Award Winning Laboratory Center</h1>
-                                    <p class="mb-5 animated slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus.</p>
+                                    <h1 class="display-1 text-white animated slideInRight mb-3">SMA Negeri 4 Kota Sukabumi</h1>
                                     <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
@@ -147,9 +146,9 @@
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="feature-item border h-100 p-5">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-award text-dark"></i>
+                            <i class="bi bi-people text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Award Winning</h5>
+                        <h5 class="mb-3">Jumlah Siswa</h5>
                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
                     </div>
                 </div>
@@ -158,25 +157,25 @@
                         <div class="icon-box-primary mb-4">
                             <i class="bi bi-people text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Expet Doctors</h5>
+                        <h5 class="mb-3">Jumlah Guru</h5>
                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <div class="feature-item border h-100 p-5">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-cash-coin text-dark"></i>
+                            <i class="bi bi-houses text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Fair Prices</h5>
+                        <h5 class="mb-3">Jumlah Kelas</h5>
                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <div class="feature-item border h-100 p-5">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-headphones text-dark"></i>
+                            <i class="bi bi-journals text-dark"></i>
                         </div>
-                        <h5 class="mb-3">24/7 Support</h5>
+                        <h5 class="mb-3">Jumlah Matpel</h5>
                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
                     </div>
                 </div>
@@ -192,12 +191,12 @@
             <div class="row g-5 py-5">
                 <div class="col-lg-6 pe-lg-5">
                     <a href="index.html" class="navbar-brand">
-                        <h1 class="h1 text-primary mb-0">Lab<span class="text-white">sky</span></h1>
+                        <h1 class="h1 text-primary mb-0">SMAN<span class="text-white">4</span></h1>
                     </a>
-                    <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
-                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
+                    <p class="fs-5 mb-4">SMA Negeri 4 Kota Sukabumi, sering disingkat sebagai SMANPAT, merupakan salah satu sekolah menengah atas negeri yang terletak di Kota Sukabumi, Jawa Barat, Indonesia.</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>Kota Sukabumi, Jawa Barat</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+062 6262 6262</p>
+                    <p><i class="fa fa-envelope me-2"></i>smanpat@school.id</p>
                     <div class="d-flex mt-4">
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -223,14 +222,7 @@
                             <a class="btn btn-link" href="">Terms & Condition</a>
                             <a class="btn btn-link" href="">Support</a>
                         </div>
-                        <div class="col-sm-12">
-                            <h4 class="text-light mb-4">Newsletter</h4>
-                            <div class="w-100">
-                                <div class="input-group">
-                                    <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address"><button class="btn btn-primary px-4">Sign Up</button>
-                                </div>
-                            </div>
-                        </div>
+                
                     </div>
                 </div>
             </div>
@@ -244,11 +236,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
+                    <p class="mb-0">&copy; <a href="https://sman4smi.sch.id/" target="_blank">SMA Negeri 4 Kota Sukabumi</a>. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">HTML Codex</a><br>Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
+                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">Moch Insan Fadilah, Candra Kusuma Hidayat</a></p>
                 </div>
             </div>
         </div>
