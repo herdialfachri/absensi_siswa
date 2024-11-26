@@ -9,7 +9,7 @@ class Home extends BaseController
         return view('landingpage/index');
     }
 
-    public function dashboard(): string
+    public function dashboard_admin(): string
     {
         return view('dashboard/dashboard_admin');
     }

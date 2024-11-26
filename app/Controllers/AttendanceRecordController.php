@@ -35,12 +35,14 @@ class AttendanceRecordController extends BaseController
     public function save()
     {
         $schedule_id = $this->request->getPost('schedule_id');
+        $tanggal = $this->request->getPost('tanggal');
         $students = $this->studentsModel->where('class_id', $this->request->getPost('class_id'))->findAll();
 
         foreach ($students as $student) {
             $this->attendanceRecordModel->save([
                 'schedule_id' => $schedule_id,
                 'student_id' => $student['id'],
+                'tanggal' => $tanggal,
                 'status' => $this->request->getPost('status_' . $student['id']),
                 'note' => $this->request->getPost('note_' . $student['id']) ?: 'Tidak ada catatan',
             ]);
@@ -49,21 +51,33 @@ class AttendanceRecordController extends BaseController
         return redirect()->to('/attendance_records')->with('success', 'Data absensi berhasil disimpan.');
     }
 
+
     public function searchAttendance()
     {
         if ($this->request->isAJAX()) {
             $nis = $this->request->getVar('nis'); // Pastikan parameter 'nis' diterima
-            if (!$nis) {
+            $tanggal = $this->request->getVar('tanggal'); // Ambil parameter tanggal
+
+            if (!$nis && !$tanggal) {
                 return $this->response->setJSON([]);
             }
 
-            $attendanceRecords = $this->attendanceRecordModel
-                ->select('attendance_records.*, students.nis as student_nis, students.name as student_name, classes.name as student_class, schedules.day, schedules.time')
+            $query = $this->attendanceRecordModel
+                ->select('attendance_records.*, students.nis as student_nis, students.name as student_name, classes.name as student_class, schedules.day, schedules.time, attendance_records.tanggal as attendance_date')
                 ->join('students', 'attendance_records.student_id = students.id', 'left')
                 ->join('classes', 'students.class_id = classes.id', 'left')
-                ->join('schedules', 'attendance_records.schedule_id = schedules.id', 'left')
-                ->like('students.nis', $nis) // Pencarian berdasarkan NIS
-                ->findAll();
+                ->join('schedules', 'attendance_records.schedule_id = schedules.id', 'left');
+
+            // Cek apakah NIS dan tanggal diberikan
+            if ($nis) {
+                $query->like('students.nis', $nis);
+            }
+
+            if ($tanggal) {
+                $query->where('attendance_records.tanggal', $tanggal);
+            }
+
+            $attendanceRecords = $query->findAll();
 
             // Debugging
             if (empty($attendanceRecords)) {
@@ -74,6 +88,7 @@ class AttendanceRecordController extends BaseController
                 return [
                     'id' => $record['id'],
                     'student_nis' => $record['student_nis'],
+                    'attendance_date' => $record['attendance_date'], // Menggunakan attendance_date
                     'day' => $record['day'],
                     'time' => $record['time'],
                     'student_name' => $record['student_name'],
@@ -87,6 +102,7 @@ class AttendanceRecordController extends BaseController
             return $this->response->setJSON($data);
         }
     }
+
 
     public function edit($id)
     {
@@ -122,7 +138,7 @@ class AttendanceRecordController extends BaseController
     {
         if ($this->request->isAJAX()) {
             $attendanceRecords = $this->attendanceRecordModel
-                ->select('attendance_records.*, students.nis as student_nis, students.name as student_name, classes.name as student_class, schedules.day, schedules.time')
+                ->select('attendance_records.*, students.nis as student_nis, students.name as student_name, classes.name as student_class, schedules.day, schedules.time, attendance_records.tanggal as attendance_date')
                 ->join('students', 'attendance_records.student_id = students.id', 'left')
                 ->join('classes', 'students.class_id = classes.id', 'left')
                 ->join('schedules', 'attendance_records.schedule_id = schedules.id', 'left')
@@ -132,6 +148,7 @@ class AttendanceRecordController extends BaseController
                 return [
                     'id' => $record['id'],
                     'student_nis' => $record['student_nis'],
+                    'attendance_date' => $record['attendance_date'], // Pastikan menggunakan attendance_date
                     'day' => $record['day'],
                     'time' => $record['time'],
                     'student_name' => $record['student_name'],

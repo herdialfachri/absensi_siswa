@@ -6,6 +6,50 @@ Tambah Absensi
 
 <?= $this->endSection() ?>
 
+<?= $this->section('sidebar') ?>
+
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item ">
+    <a class="nav-link" href="/dashboard_admin">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Beranda</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Menu
+</div>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-arrow-up"></i>
+        <span>Absensi</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/attendance_records">Absen</a>
+            <a class="collapse-item" href="/create">Lakukan Absen</a>
+        </div>
+    </div>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -21,6 +65,10 @@ Tambah Absensi
             <div class="card-body">
                 <form id="attendanceForm" action="<?= site_url('/save'); ?>" method="post">
                     <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                    </div>
+                    <div class="form-group">
                         <label for="schedule_id">Jadwal</label>
                         <select class="form-control" id="schedule_id" name="schedule_id" required onchange="updateScheduleDetails()">
                             <?php foreach ($schedules as $schedule) : ?>
@@ -30,11 +78,12 @@ Tambah Absensi
                                     data-class-id="<?= $schedule['class_id']; ?>"
                                     data-class-name="<?= $schedule['class_name']; ?>"
                                     data-day="<?= $schedule['day']; ?>">
-                                    <?= $schedule['name'] . ' - ' . $schedule['day']; ?>
+                                    <?= $schedule['day'] . ', ' . $schedule['time'] . ', ' . $schedule['name'] . ' - ' . $schedule['teacher_name']; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label>Guru</label>
                         <input type="text" id="teacher_name" class="form-control" readonly>

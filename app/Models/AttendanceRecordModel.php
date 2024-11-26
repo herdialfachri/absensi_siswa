@@ -11,6 +11,7 @@ class AttendanceRecordModel extends Model
     protected $allowedFields = [
         'schedule_id',
         'student_id',
+        'tanggal',
         'status',
         'note',
         'created_at',
