@@ -1,7 +1,7 @@
 <?= $this->extend('tmp/template') ?>
 
 <?= $this->section('title') ?>
-Daftar Mata Pelajaran
+Tambah Siswa
 <?= $this->endSection() ?>
 
 <?= $this->section('sidebar') ?>
@@ -48,47 +48,47 @@ Daftar Mata Pelajaran
 
 <?= $this->section('content') ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Daftar Mata Pelajaran</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Siswa</h1>
 </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-primary">Mata Pelajaran</h6>
-                <a href="/subjects/create" class="btn btn-primary rounded-circle" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-plus"></i>
-                </a>
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tambah Siswa</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nama Mata Pelajaran</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($subjects)) : ?>
-                                <?php foreach ($subjects as $subject) : ?>
-                                    <tr>
-                                        <td><?= $subject['id']; ?></td>
-                                        <td><?= $subject['name']; ?></td>
-                                        <td>
-                                            <a href="/subjects/edit/<?= $subject['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/subjects/delete/<?= $subject['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Delete</a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else : ?>
-                                <tr>
-                                    <td colspan="4" class="text-center">Tidak ada data.</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
+                <form action="/students/store" method="post">
+                    <div class="form-group">
+                        <label for="class_id">Kelas</label>
+                        <select class="form-control" id="class_id" name="class_id" required>
+                            <?php foreach ($classes as $class) : ?>
+                                <option value="<?= $class['id']; ?>"><?= $class['name']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nama Siswa</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nis">NIS</label>
+                        <input type="text" class="form-control" id="nis" name="nis" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telepon</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Alamat</label>
+                        <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="/students" class="btn btn-secondary">Kembali</a>
+                </form>
             </div>
         </div>
     </div>

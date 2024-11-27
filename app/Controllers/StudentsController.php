@@ -18,21 +18,59 @@ class StudentsController extends BaseController
 
     public function index()
     {
-        // Join untuk mendapatkan nama kelas
         $data['students'] = $this->studentsModel
             ->select('students.*, classes.name as class_name')
             ->join('classes', 'students.class_id = classes.id')
-            ->findAll(); // Ambil data siswa dan kelas terkait
-
+            ->findAll();
+        
         return view('dashboard/siswa', $data);
     }
 
-    public function byClass($classId)
+    public function create()
     {
-        // Ambil data siswa berdasarkan class_id
-        $students = $this->studentsModel->getStudentsByClass($classId);
-        
-        // Kirimkan data dalam format JSON
-        return $this->response->setJSON($students);
+        $data['classes'] = $this->classesModel->findAll();
+        return view('dashboard/create_siswa', $data);
+    }
+
+    public function store()
+    {
+        $this->studentsModel->save([
+            'class_id' => $this->request->getPost('class_id'),
+            'name' => $this->request->getPost('name'),
+            'nis' => $this->request->getPost('nis'),
+            'email' => $this->request->getPost('email'),
+            'phone' => $this->request->getPost('phone'),
+            'address' => $this->request->getPost('address'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+        return redirect()->to('/students');
+    }
+
+    public function edit($id)
+    {
+        $data['student'] = $this->studentsModel->find($id);
+        $data['classes'] = $this->classesModel->findAll();
+        return view('dashboard/edit_siswa', $data);
+    }
+
+    public function update($id)
+    {
+        $this->studentsModel->update($id, [
+            'class_id' => $this->request->getPost('class_id'),
+            'name' => $this->request->getPost('name'),
+            'nis' => $this->request->getPost('nis'),
+            'email' => $this->request->getPost('email'),
+            'phone' => $this->request->getPost('phone'),
+            'address' => $this->request->getPost('address'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+        return redirect()->to('/students');
+    }
+
+    public function delete($id)
+    {
+        $this->studentsModel->delete($id);
+        return redirect()->to('/students');
     }
 }

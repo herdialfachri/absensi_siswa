@@ -5,26 +5,16 @@ Daftar Jadwal
 <?= $this->endSection() ?>
 
 <?= $this->section('sidebar') ?>
-
-<!-- Divider -->
 <hr class="sidebar-divider my-0">
-
-<!-- Nav Item - Dashboard -->
 <li class="nav-item ">
     <a class="nav-link" href="/dashboard_admin">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Beranda</span></a>
 </li>
-
-<!-- Divider -->
 <hr class="sidebar-divider">
-
-<!-- Heading -->
 <div class="sidebar-heading">
     Menu
 </div>
-
-<!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-arrow-down"></i>
@@ -36,11 +26,10 @@ Daftar Jadwal
             <a class="collapse-item" href="/students">Data Siswa</a>
             <a class="collapse-item" href="/teachers">Data Guru</a>
             <a class="collapse-item" href="/classes">Data Kelas</a>
+            <a class="collapse-item" href="/schedules">Data Jadwal</a>
         </div>
     </div>
 </li>
-
-<!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-arrow-up"></i>
@@ -52,30 +41,24 @@ Daftar Jadwal
         </div>
     </div>
 </li>
-
-<!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
-
-<!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
 </div>
-
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
-<!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Daftar Jadwal</h1>
 </div>
-
-<!-- Content Row -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Jadwal</h6>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">Jadwal</h6>
+                <a href="/schedules/create" class="btn btn-primary rounded-circle" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -83,12 +66,13 @@ Daftar Jadwal
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Kelas</th>
+                                <th>Nama Kelas</th>
                                 <th>Mata Pelajaran</th>
                                 <th>Guru</th>
-                                <th>Waktu</th>
+                                <th>Nama</th>
                                 <th>Hari</th>
-                                <th>Jam</th>
+                                <th>Waktu</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +86,10 @@ Daftar Jadwal
                                         <td><?= $schedule['name']; ?></td>
                                         <td><?= $schedule['day']; ?></td>
                                         <td><?= $schedule['time']; ?></td>
+                                        <td>
+                                            <a href="/schedules/edit/<?= $schedule['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/schedules/delete/<?= $schedule['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Delete</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
@@ -116,5 +104,4 @@ Daftar Jadwal
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>

@@ -4,29 +4,17 @@
 Daftar Siswa
 <?= $this->endSection() ?>
 
-<?= $this->section('content') ?>
-
 <?= $this->section('sidebar') ?>
-
-<!-- Divider -->
 <hr class="sidebar-divider my-0">
-
-<!-- Nav Item - Dashboard -->
 <li class="nav-item ">
     <a class="nav-link" href="/dashboard_admin">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Beranda</span></a>
 </li>
-
-<!-- Divider -->
 <hr class="sidebar-divider">
-
-<!-- Heading -->
 <div class="sidebar-heading">
     Menu
 </div>
-
-<!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-arrow-down"></i>
@@ -41,8 +29,6 @@ Daftar Siswa
         </div>
     </div>
 </li>
-
-<!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-arrow-up"></i>
@@ -54,28 +40,24 @@ Daftar Siswa
         </div>
     </div>
 </li>
-
-<!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
-
-<!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
 </div>
-
 <?= $this->endSection() ?>
 
-<!-- Page Heading -->
+<?= $this->section('content') ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Daftar Siswa</h1>
 </div>
-
-<!-- Content Row -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">Siswa</h6>
+                <a href="/students/create" class="btn btn-primary rounded-circle" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -83,12 +65,13 @@ Daftar Siswa
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Siswa</th>
+                                <th>Kelas</th>
+                                <th>Nama</th>
                                 <th>NIS</th>
                                 <th>Email</th>
                                 <th>Telepon</th>
                                 <th>Alamat</th>
-                                <th>Kelas</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,17 +79,21 @@ Daftar Siswa
                                 <?php foreach ($students as $student) : ?>
                                     <tr>
                                         <td><?= $student['id']; ?></td>
+                                        <td><?= $student['class_name']; ?></td>
                                         <td><?= $student['name']; ?></td>
                                         <td><?= $student['nis']; ?></td>
                                         <td><?= $student['email']; ?></td>
                                         <td><?= $student['phone']; ?></td>
                                         <td><?= $student['address']; ?></td>
-                                        <td><?= $student['class_name']; ?></td>
+                                        <td>
+                                            <a href="/students/edit/<?= $student['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/students/delete/<?= $student['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Delete</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td colspan="9" class="text-center">Tidak ada data.</td>
+                                    <td colspan="8" class="text-center">Tidak ada data.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -116,5 +103,4 @@ Daftar Siswa
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>
