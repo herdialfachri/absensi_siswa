@@ -37,6 +37,7 @@ Dashboard Teacher
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/attendance_records">Absen</a>
             <a class="collapse-item" href="/create">Lakukan Absen</a>
+            <a class="collapse-item" href="/attendance_export/view">Riwayat Absen</a>
         </div>
     </div>
 </li>

@@ -40,6 +40,8 @@ $routes->get('/students/delete/(:num)', 'StudentsController::delete/$1', ['filte
 
 
 $routes->get('/teachers', 'TeachersController::index', ['filter' => 'admin']);
+$routes->get('/attendance_export', 'AttendanceExportController::export', ['filter' => 'teacher']);
+$routes->get('/attendance_export/view', 'AttendanceExportController::view', ['filter' => 'teacher']);
 $routes->get('/teachers/create', 'TeachersController::create', ['filter' => 'admin']);
 $routes->post('/teachers/store', 'TeachersController::store', ['filter' => 'admin']);
 $routes->get('/teachers/edit/(:num)', 'TeachersController::edit/$1', ['filter' => 'admin']);
@@ -74,4 +76,4 @@ $routes->get('/create', 'AttendanceRecordController::input', ['filter' => 'auth'
 $routes->post('/save', 'AttendanceRecordController::save');
 $routes->get('students/by-class/(:num)', 'StudentsController::byClass/$1');
 $routes->post('/search-attendance', 'AttendanceRecordController::searchAttendance');
-
+$routes->get('/attendance_export', 'AttendanceExportController::export', ['filter' => 'teacher']);
