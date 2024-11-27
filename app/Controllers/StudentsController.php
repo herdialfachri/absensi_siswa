@@ -22,7 +22,7 @@ class StudentsController extends BaseController
             ->select('students.*, classes.name as class_name')
             ->join('classes', 'students.class_id = classes.id')
             ->findAll();
-        
+
         return view('dashboard/siswa', $data);
     }
 
@@ -72,5 +72,12 @@ class StudentsController extends BaseController
     {
         $this->studentsModel->delete($id);
         return redirect()->to('/students');
+    }
+
+    public function byClass($classId)
+    {
+        $students = $this->studentsModel->getStudentsByClass($classId);
+
+        return $this->response->setJSON($students);
     }
 }

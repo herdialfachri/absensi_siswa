@@ -15,12 +15,12 @@ $routes->get('/dashboard_admin', 'Home::dashboard_admin', ['filter' => 'admin'])
 $routes->get('/dashboard_master', 'Home::dashboard_master', ['filter' => 'master']);
 $routes->get('/dashboard_teacher', 'Home::dashboard_teacher', ['filter' => 'teacher']);
 
-$routes->get('/users', 'UsersController::index');
-$routes->get('/users/create', 'UsersController::create'); 
-$routes->post('/users/store', 'UsersController::store'); 
-$routes->get('/users/edit/(:segment)', 'UsersController::edit/$1'); 
-$routes->post('/users/update/(:segment)', 'UsersController::update/$1'); 
-$routes->delete('/users/delete/(:segment)', 'UsersController::delete/$1');
+$routes->get('/users', 'UsersController::index', ['filter' => 'master']);
+$routes->get('/users/create', 'UsersController::create', ['filter' => 'master']); 
+$routes->post('/users/store', 'UsersController::store', ['filter' => 'master']);
+$routes->get('/users/edit/(:segment)', 'UsersController::edit/$1', ['filter' => 'master']); 
+$routes->post('/users/update/(:segment)', 'UsersController::update/$1', ['filter' => 'master']);
+$routes->delete('/users/delete/(:segment)', 'UsersController::delete/$1', ['filter' => 'master']);
 
 
 $routes->get('/subjects', 'SubjectsController::index', ['filter' => 'admin']);
@@ -62,8 +62,6 @@ $routes->get('/schedules/edit/(:num)', 'SchedulesController::edit/$1', ['filter'
 $routes->post('/schedules/update/(:num)', 'SchedulesController::update/$1', ['filter' => 'admin']);
 $routes->get('/schedules/delete/(:num)', 'SchedulesController::delete/$1', ['filter' => 'admin']);
 
-
-$routes->get('/schedules_admin', 'SchedulesController::index', ['filter' => 'auth']);
 
 $routes->get('/attendance_records', 'AttendanceRecordController::index', ['filter' => 'auth']);
 $routes->get('/attendance_records/edit/(:num)', 'AttendanceRecordController::edit/$1', ['filter' => 'auth']);
