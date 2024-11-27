@@ -65,15 +65,15 @@ $routes->post('/schedules/update/(:num)', 'SchedulesController::update/$1', ['fi
 $routes->get('/schedules/delete/(:num)', 'SchedulesController::delete/$1', ['filter' => 'admin']);
 
 
-$routes->get('/attendance_records', 'AttendanceRecordController::index', ['filter' => 'auth']);
-$routes->get('/attendance_records/edit/(:num)', 'AttendanceRecordController::edit/$1', ['filter' => 'auth']);
-$routes->post('/attendance_records/update/(:num)', 'AttendanceRecordController::update/$1');
-$routes->get('/reload-attendance', 'AttendanceRecordController::reloadAttendance');
-$routes->post('/filter-attendance', 'AttendanceRecordController::filterAttendance');
+$routes->get('/attendance_records', 'AttendanceRecordController::index', ['filter' => 'teacher']);
+$routes->get('/attendance_records/edit/(:num)', 'AttendanceRecordController::edit/$1', ['filter' => 'teacher']);
+$routes->post('/attendance_records/update/(:num)', 'AttendanceRecordController::update/$1', ['filter' => 'teacher']);
+$routes->get('/reload-attendance', 'AttendanceRecordController::reloadAttendance', ['filter' => 'teacher']);
+$routes->post('/filter-attendance', 'AttendanceRecordController::filterAttendance', ['filter' => 'teacher']);
 
 
-$routes->get('/create', 'AttendanceRecordController::input', ['filter' => 'auth']);
-$routes->post('/save', 'AttendanceRecordController::save');
-$routes->get('students/by-class/(:num)', 'StudentsController::byClass/$1');
-$routes->post('/search-attendance', 'AttendanceRecordController::searchAttendance');
+$routes->get('/create', 'AttendanceRecordController::input', ['filter' => 'teacher']);
+$routes->post('/save', 'AttendanceRecordController::save', ['filter' => 'teacher']);
+$routes->get('/students/by-class/(:num)', 'StudentsController::byClass/$1', ['filter' => 'teacher']);
+$routes->post('/search-attendance', 'AttendanceRecordController::searchAttendance', ['filter' => 'teacher']);
 $routes->get('/attendance_export', 'AttendanceExportController::export', ['filter' => 'teacher']);
