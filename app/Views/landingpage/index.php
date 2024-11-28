@@ -48,16 +48,16 @@
                 <div class="d-flex">
                     <i class="bi bi-telephone-inbound fs-2"></i>
                     <div class="ms-3">
-                        <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+012 345 6789</span>
+                        <h5 class="text-white mb-0">Call Center</h5>
+                        <span>+6244 4444 4444</span>
                     </div>
                 </div>
-                <a href="index.html" class="h1 text-white mb-0">SMAN<span class="text-dark">4</span></a>
+                <a href="/" class="h1 text-white mb-0">SMAN<span class="text-dark">4</span></a>
                 <div class="d-flex">
                     <i class="bi bi-envelope fs-2"></i>
                     <div class="ms-3">
-                        <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>info@example.com</span>
+                        <h5 class="text-white mb-0">Email</h5>
+                        <span>admin@smanpat.com</span>
                     </div>
                 </div>
             </div>
@@ -83,10 +83,10 @@
                         <a href="/login" class="nav-item nav-link">Masuk</a>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </nav>
@@ -106,7 +106,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-7 text-start">
                                     <h1 class="display-1 text-white animated slideInRight mb-3">SMA Negeri 4 Kota Sukabumi</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="/" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-lg-7 text-end">
                                     <h1 class="display-1 text-white animated slideInLeft mb-3">Selamat datang di website Absensi SMANPAT</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Explore More</a>
+                                    <a href="/" class="btn btn-primary py-3 px-5 animated slideInLeft">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                             <i class="bi bi-people text-dark"></i>
                         </div>
                         <h5 class="mb-3">Jumlah Siswa</h5>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
+                        <h4 class="mb-0"><?= $studentCount; ?> Siswa</h4>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
@@ -158,7 +158,7 @@
                             <i class="bi bi-people text-dark"></i>
                         </div>
                         <h5 class="mb-3">Jumlah Guru</h5>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
+                        <h4 class="mb-0"><?= $teacherCount; ?> Guru</h4>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
@@ -167,7 +167,7 @@
                             <i class="bi bi-houses text-dark"></i>
                         </div>
                         <h5 class="mb-3">Jumlah Kelas</h5>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
+                        <h4 class="mb-0"><?= $classCount; ?> Kelas</h4>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
@@ -176,7 +176,7 @@
                             <i class="bi bi-journals text-dark"></i>
                         </div>
                         <h5 class="mb-3">Jumlah Matpel</h5>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
+                        <h4 class="mb-0"><?= $subjectCount; ?> Mata Pelajaran</h4>
                     </div>
                 </div>
             </div>
@@ -207,20 +207,16 @@
                 <div class="col-lg-6 ps-lg-5">
                     <div class="row g-5">
                         <div class="col-sm-6">
-                            <h4 class="text-light mb-4">Quick Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <h4 class="text-light mb-4">Navigasi</h4>
+                            <a class="btn btn-link" href="/">Beranda</a>
+                            <a class="btn btn-link" href="/login">Login</a>
                         </div>
                         <div class="col-sm-6">
-                            <h4 class="text-light mb-4">Popular Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <h4 class="text-light mb-4">Tentang</h4>
+                            <a class="btn btn-link" href="https://sman4smi.sch.id/" target="_blank">Website Smanpat</a>
+                            <a class="btn btn-link" href="https://sman4smi.sch.id/sejarah/" target="_blank">Sejarah Smanpat</a>
+                            <a class="btn btn-link" href="https://sman4smi.sch.id/kegiatan/" target="_blank">Kegiatan Smanpat</a>
+                            <a class="btn btn-link" href="https://sman4smi.sch.id/guru-dan-staff-tata-laksana/" target="_blank">Pengurus Sekolah</a>
                         </div>
                 
                     </div>
